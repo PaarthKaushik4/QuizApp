@@ -1,0 +1,17 @@
+# Ignore dependencies
+/node_modules
+/quiz-app-backend/node_modules
+/quiz-app-frontend/node_modules
+
+# Ignore environment variables
+/quiz-app-backend/.env
+
+# Ignore Yarn & PnP files
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Ignore build and cache files
+/quiz-app-backend/dist
+/quiz-app-frontend/dist
+/quiz-app-frontend/.vite
