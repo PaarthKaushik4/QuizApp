@@ -25,7 +25,7 @@ const AfterLoginPage=()=>{
     useEffect(() => {
             const fetchHistory = async () => {
                 try {
-                    const response = await fetch(`http://localhost:5000/api/history/${username}`);
+                    const response = await fetch(`https://quizapp-0dkr.onrender.com/api/history/${username}`);
                     const data = await response.json();
                     setHistory(data.quizzes || []); // Store history data
                     setQuizPlayed(data.noOfQuizzesPlayed || 0);
