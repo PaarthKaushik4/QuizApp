@@ -16,7 +16,7 @@ function UsersDashboard({quizPlayed,setQuizPlayed,setCorrectAnswers,correctAnswe
     useEffect(() => {
         const fetchQuizzes = async () => {
             try {
-                const response = await fetch("http://localhost:5000/api/quizzes");
+                const response = await fetch("https://quizapp-0dkr.onrender.com/api/quizzes");
                 const data = await response.json();
                 setQuizzes(data);
             } catch (error) {
