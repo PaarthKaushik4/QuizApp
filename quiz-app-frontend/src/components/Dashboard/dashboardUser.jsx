@@ -72,7 +72,7 @@ function UsersDashboard({quizPlayed,setQuizPlayed,setCorrectAnswers,correctAnswe
         const quizName = selectedQuiz.topic;
         console.log(quizName);
         try {
-            const response = await fetch("http://localhost:5000/api/history/update", {
+            const response = await fetch("https://quizapp-0dkr.onrender.com/api/history/update", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
