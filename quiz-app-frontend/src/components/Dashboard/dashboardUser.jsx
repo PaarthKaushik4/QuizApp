@@ -50,11 +50,15 @@ function UsersDashboard({quizPlayed,setQuizPlayed,setCorrectAnswers,correctAnswe
 
     // Handle Answer Selection
     const handleAnswerClick = (option) => {
-        if (selectedQuiz.questions[currentQuestionIndex].answer === option) {
+        const correctAnswer = selectedQuiz.questions[currentQuestionIndex].answer.trim().toLowerCase();
+        const selectedOption = option.trim().toLowerCase();
+    
+        if (correctAnswer === selectedOption) {
             setScore(score + 1);
         }
         nextQuestion();
     };
+    
     const fetchHistory = async () => {
         try {
             const response = await fetch(`https://quizapp-0dkr.onrender.com/api/history/${username}`);
