@@ -53,7 +53,7 @@ function UsersDashboard({quizPlayed,setQuizPlayed,setCorrectAnswers,correctAnswe
         const correctAnswer = selectedQuiz.questions[currentQuestionIndex].answer.trim().toLowerCase();
         const selectedOption = option.trim().toLowerCase();
     
-        if (correctAnswer === selectedOption) {
+        if (correctAnswer == selectedOption) {
             setScore(score + 1);
         }
         nextQuestion();
