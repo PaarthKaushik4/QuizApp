@@ -52,9 +52,12 @@ function UsersDashboard({quizPlayed,setQuizPlayed,setCorrectAnswers,correctAnswe
     const handleAnswerClick = (option) => {
         const correctAnswer = selectedQuiz.questions[currentQuestionIndex].answer.trim().toLowerCase();
         const selectedOption = option.trim().toLowerCase();
-    
-        if (correctAnswer == selectedOption) {
-            setScore(score + 1);
+        console.log("📝 QUESTION:", selectedQuiz.questions[currentQuestionIndex].question);
+        console.log("✅ CORRECT ANSWER:", correctAnswer);
+        console.log("🎯 SELECTED OPTION:", selectedOption);
+        if (correctAnswer === selectedOption) {
+            setScore((prev) => prev + 1);
+            console.log("score : ",score);
         }
         nextQuestion();
     };
