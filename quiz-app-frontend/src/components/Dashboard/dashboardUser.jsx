@@ -52,14 +52,23 @@ function UsersDashboard({quizPlayed,setQuizPlayed,setCorrectAnswers,correctAnswe
     const handleAnswerClick = (option) => {
         const correctAnswer = selectedQuiz.questions[currentQuestionIndex].answer.trim().toLowerCase();
         const selectedOption = option.trim().toLowerCase();
+    
         console.log("📝 QUESTION:", selectedQuiz.questions[currentQuestionIndex].question);
         console.log("✅ CORRECT ANSWER:", correctAnswer);
         console.log("🎯 SELECTED OPTION:", selectedOption);
-        newScore = score + 1;
-        setScore(newScore);
-        console.log("✅ Updated Score (instant):", newScore);
+    
+        // ✅ Calculate new score immediately
+        let newScore = score;
+        if (correctAnswer === selectedOption) {
+            newScore = score + 1;
+            setScore(newScore);
+            console.log("✅ Updated Score (instant):", newScore);
+        }
+    
+        // ✅ Pass the correct score forward
         nextQuestion(newScore);
     };
+
     
     const fetchHistory = async () => {
         try {
