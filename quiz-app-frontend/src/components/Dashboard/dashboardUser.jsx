@@ -55,11 +55,10 @@ function UsersDashboard({quizPlayed,setQuizPlayed,setCorrectAnswers,correctAnswe
         console.log("📝 QUESTION:", selectedQuiz.questions[currentQuestionIndex].question);
         console.log("✅ CORRECT ANSWER:", correctAnswer);
         console.log("🎯 SELECTED OPTION:", selectedOption);
-        if (correctAnswer === selectedOption) {
-            setScore((prev) => prev + 1);
-            console.log("score : ",score);
-        }
-        nextQuestion();
+        newScore = score + 1;
+        setScore(newScore);
+        console.log("✅ Updated Score (instant):", newScore);
+        nextQuestion(newScore);
     };
     
     const fetchHistory = async () => {
@@ -98,18 +97,18 @@ function UsersDashboard({quizPlayed,setQuizPlayed,setCorrectAnswers,correctAnswe
     
 
     // Go to Next Question
-    const nextQuestion = () => {
-        if (currentQuestionIndex < selectedQuiz.questions.length - 1) {
+    const nextQuestion = (latestScore = score) => {
+    if (currentQuestionIndex < selectedQuiz.questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
             setTimeLeft(10);
         } else {
             setQuizStarted(false);
-            alert(`Quiz Over! You scored ${score} out of ${selectedQuiz.questions.length}`);
-            handleQuizCompletion(score)
+            alert(`Quiz Over! You scored ${latestScore} out of ${selectedQuiz.questions.length}`);
+            handleQuizCompletion(latestScore);
             setSelectedQuiz(null);
-            
         }
     };
+
 
     return (
         <section className='w-280 h-auto shadow-2xl pl-10 pr-10 pt-10 pb-5 rounded-xl mt-20 ml-80 bg-gray-50'>
